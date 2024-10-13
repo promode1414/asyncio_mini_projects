@@ -33,12 +33,19 @@ async def send_message(ws):
 
 async def receive_message(ws):
     """Handles receiving messages from the server."""
+    """
+	    This internally calls await `msg = await self.receive()` inside `async def __anext__(self)` function 
+	    which basically make this for loop non-blocking
+    """
     async for msg in ws:
         print(f"Received message: {msg.data}")
 
 
 async def connect_server():
     """Connects to the WebSocket server and manages send/receive tasks."""
+    """
+	    async with also implements __aenter__ and calls await interna
+    """
     async with aiohttp.ClientSession() as session:
         async with session.ws_connect('http://127.0.0.1:8080/ws') as ws:
             print('Connected to server')
@@ -48,6 +55,7 @@ async def connect_server():
             receive_task = asyncio.create_task(receive_message(ws))
 
             # Wait for both tasks to complete
+            # Both the task are in infinite loop :)
             await asyncio.gather(send_task, receive_task)
 
 
