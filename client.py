@@ -44,7 +44,7 @@ async def receive_message(ws):
 async def connect_server():
     """Connects to the WebSocket server and manages send/receive tasks."""
     """
-	    async with also implements __aenter__ and calls await interna
+	    async with also implements __aenter__ and calls await internally and hence is non-blocking in nature i.e gives control back to event loop during io
     """
     async with aiohttp.ClientSession() as session:
         async with session.ws_connect('http://127.0.0.1:8080/ws') as ws:
