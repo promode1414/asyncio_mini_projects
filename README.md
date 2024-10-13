@@ -13,3 +13,6 @@ This project demonstrates how to implement a WebSocket server and client in Pyth
 - Python 3.7+
 - `aiohttp`: For handling WebSocket communication.
 - `aioconsole`: For non-blocking user input.
+
+## Reference
+For more information on how to handle WebSocket clients in asyncio, you can refer to this detailed guide: SuperFastPython: Asyncio WebSocket Clients.[https://superfastpython.com/asyncio-websocket-clients/]
